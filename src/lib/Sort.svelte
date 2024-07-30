@@ -1,0 +1,21 @@
+<script>
+    import { productStore, setSorting } from '../productStore.js';
+    import { get } from 'svelte/store';
+  
+    let sorting = "default";
+    $: sorting = get(productStore).sorting;
+  
+    function handleSort(event) {
+      setSorting(event.target.value);
+    }
+  </script>
+  
+  <div class="flex sm:w-[95%] max-w-[21rem] md:w-full">
+    <label for="sort" class="w-20 my-auto font-semibold">Sort by: </label>
+    <select id="sort" class="p-2.5 w-full max-w-[21rem] text-sm text-gray-900 bg-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" bind:value={sorting} on:change={handleSort}>
+      <option value="default">Default</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+  </div>
+  
