@@ -7,8 +7,10 @@
     let error = null;
     let loading = false;
   
+    // exported property to receive the product id from the parent component
     export let id;
   
+    // fetches product details from the API based on the provided productId.
     async function getProductDetails(productId) {
       try {
         const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
@@ -23,6 +25,7 @@
       }
     }
   
+    // on component mount, fetch product details and handle loading and error states
     onMount(async () => {
       loading = true;
       const { response, error: fetchError } = await getProductDetails(id);
@@ -44,6 +47,7 @@
       <DetailSkeleton />
     </div>
   {:else}
+  <!-- product details rendering logic -->
     <div class="grid m-10 space-y-5">
       <a class="w-20px" href="/">
         <button class="bg-cyan-500 text-gray-500 py-2 px-4 rounded">Back to Products</button>

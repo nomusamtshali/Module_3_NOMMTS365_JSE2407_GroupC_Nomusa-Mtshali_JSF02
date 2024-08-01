@@ -12,6 +12,7 @@ export const productStore = writable({
   categories: []
 });
 
+// updates the sorting method in the product store and sorts the products accordingly.
 export const setSorting = (sorting) => {
   productStore.update(store => {
     store.sorting = sorting;
@@ -20,6 +21,7 @@ export const setSorting = (sorting) => {
   });
 };
 
+// updates the search term in the product store and filters the products accordingly.
 export const setSearchTerm = (searchTerm) => {
   productStore.update(store => {
     store.searchTerm = searchTerm;
@@ -28,6 +30,7 @@ export const setSearchTerm = (searchTerm) => {
   });
 };
 
+// updates the filter item in the product store and fetches the products accordingly.
 export const setFilterItem = (category) => {
   productStore.update(store => {
     store.filterItem = category;
@@ -36,6 +39,8 @@ export const setFilterItem = (category) => {
   });
 };
 
+
+// fetches products from the API based on the filter item and updates the product store.
 export const fetchProducts = async () => {
   const store = get(productStore);
   productStore.update(store => ({ ...store, loading: true }));
@@ -63,6 +68,7 @@ export const fetchProducts = async () => {
   }
 };
 
+// fetches categories from the API and updates the product store.
 export const fetchCategories = async () => {
   const { response, error } = await getCategories();
   if (error) {
@@ -72,6 +78,7 @@ export const fetchCategories = async () => {
   }
 };
 
+// sorts the products in the product store based on the current sorting method.
 const sortProducts = () => {
   productStore.update(store => {
     if (store.sorting !== "default") {
@@ -85,6 +92,7 @@ const sortProducts = () => {
   });
 };
 
+// filters the products in the product store based on the current search term.
 const searchProducts = () => {
   const store = get(productStore);
   if (store.searchTerm.trim() !== "") {

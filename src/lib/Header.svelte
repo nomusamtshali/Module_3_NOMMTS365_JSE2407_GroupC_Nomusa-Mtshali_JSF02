@@ -1,6 +1,8 @@
 <script>
+  // boolean variable to control the visibility of the navigation bar 
   let isNavbarVisible = false;
 
+  // function to toggle the visibility of the navigation bar
   const toggleNavbar = () => {
     isNavbarVisible = !isNavbarVisible;
   };

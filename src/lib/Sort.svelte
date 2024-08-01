@@ -1,4 +1,7 @@
 <script>
+  // this function handles the change event of the sort dropdown.
+  // it updates the sorting state by calling the `setSorting` function with the selected value.
+     
     export let setSorting
   
     function handleSort(event) {

@@ -13,6 +13,7 @@
   let selectedCategory = '';
   let selectedSort = 'default';
 
+  // fetches and processes product data from the API
   async function getProducts() {
     try {
       let response = await fetch('https://fakestoreapi.com/products');
@@ -30,6 +31,7 @@
       }
   }
 
+ // fetches and processes product data for a specific category from the API.
   async function getProductsByCategory(category) {
       try {
         loading = true;
@@ -45,6 +47,7 @@
     }
   }
 
+  // handles the change of selected category.
   function handleCategoryChange(category) {
       selectedCategory = category;
       if (selectedCategory) {
@@ -54,6 +57,8 @@
     }
   }
 
+
+  //  sorts the products based on the selected option.
   function sortProducts(option) {
     selectedSort = option;
     if (option === 'lowToHigh') {
@@ -65,10 +70,12 @@
     }
   }
 
+  // handles the change of sorting option.
   function handleSort(option) {
     sortProducts(option);
   }
 
+  // fetches product data when the component is mounted.
   onMount(() => {
     getProducts();
   });

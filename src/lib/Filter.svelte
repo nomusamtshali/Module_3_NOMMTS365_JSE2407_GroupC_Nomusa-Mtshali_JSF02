@@ -3,17 +3,21 @@
     import { productStore, setSearchTerm, fetchCategories } from '../productStore';
     import { get } from 'svelte/store';
   
-    export let categories = [];
-    export let selectedCategory = '';
-    export let searchTerm = "";
-    export let onCategoryChange = () => {};
+    // props
+    export let categories = []; // list of available categories
+    export let selectedCategory = ''; // currently selected category
+    export let searchTerm = ""; // search term entered by user
+    export let onCategoryChange = () => {}; // callback function to handle category change
   
+    // reactive variables
     $: ({ filterItem, searchTerm, categories } = get(productStore));
   
+    // lifecycle method to fetch categories when the component is mounted
     onMount(async () => {
       await fetchCategories();
     });
 
+    // function to handle category change event 
     const handleChange = (event) => {
       // @ts-ignore
       onCategoryChange(event.target.value);
