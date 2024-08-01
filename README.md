@@ -1,4 +1,4 @@
-[JSF02] Project: Svelte Challenge
+# [JSF02] Project: Svelte Challenge
 
 ## Project Overview
 
@@ -74,4 +74,4 @@ To set up and run the project, follow these steps:
 
 - Throughout this project, I had the opportunity to develop a wide range of skills and knowledge that will be beneficial for my future endeavors. One of the most significant takeaways from this project was the importance of understanding the underlying concepts and principles of a framework, rather than just its syntax. In addition to the technical skills I acquired, I also improved my ability to work independently and think critically and creatively. I had to rely on my own resources to overcome challenges and solve problems, and I developed a sense of self-sufficiency and confidence in my abilities.
 
-In conclusion, this project was a valuable learning experience that helped me develop a wide range of skills and knowledge. I gained a deep understanding of Svelte.js and its ecosystem, and I improved my ability to work independently and think critically and creatively. I am proud of the work I did on this project, and I am excited to apply the skills and knowledge I gained to new and challenging initiatives.
+- In conclusion, this project was a valuable learning experience that helped me develop a wide range of skills and knowledge. I gained a deep understanding of Svelte.js and its ecosystem, and I improved my ability to work independently and think critically and creatively. I am proud of the work I did on this project, and I am excited to apply the skills and knowledge I gained to new and challenging initiatives.
