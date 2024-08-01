@@ -11,9 +11,9 @@ export const getCategories = async () => {
     }
   };
   
-  export const fetchSingleProduct = async (id) => {
+  export const fetchSingleProduct = async (productId) => {
     try {
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
       if (!response.ok) {
         throw new Error("Data fetching failed :( , please check your network connection and reload.");
       }
