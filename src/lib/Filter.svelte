@@ -1,44 +1,36 @@
 <script>
     import { onMount } from 'svelte';
-    import { productStore, setFilterItem, setSearchTerm, fetchCategories } from '../productStore';
+    import { productStore, setSearchTerm, fetchCategories } from '../productStore';
     import { get } from 'svelte/store';
   
-    let categories = [];
-    let filterItem = "All categories";
-    let searchTerm = "";
-    let dropdownOpen = false;
+    export let categories = [];
+    export let selectedCategory = '';
+    export let searchTerm = "";
+    export let onCategoryChange = () => {};
   
     $: ({ filterItem, searchTerm, categories } = get(productStore));
   
     onMount(async () => {
       await fetchCategories();
     });
-  
-    function toggleDropdown() {
-      dropdownOpen = !dropdownOpen;
-    }
-  
-    function handleFilter(category) {
-      setFilterItem(category);
-      dropdownOpen = false;
+
+    const handleChange = (event) => {
+      // @ts-ignore
+      onCategoryChange(event.target.value);
     }
   </script>
   
   <form>
     <div class="flex lg:w-[31.25rem] sm:w-[95%] md:w-full relative">
-      <button on:click={toggleDropdown} id="dropdown-button" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200" type="button">
-        {filterItem}
-        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-        </svg>
-      </button>
-      <div class="z-10 absolute top-[100%] {dropdownOpen ? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
-          <li on:click={() => handleFilter('All categories')} class="inline-flex w-full px-4 py-2 hover:bg-gray-100">All categories</li>
+
+      <div>
+        <label for="category"  class="w-20 my-auto font-semibold"></label>
+        <select id="category" on:change={handleChange} bind:value={selectedCategory} class="inline-flex w-full px-4 py-2 hover:bg-gray-100" >
+          <option value="">All categories</option>
           {#each categories as category}
-            <li><button on:click={() => handleFilter(category)} type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100">{category}</button></li>
+            <option value={category}>{category}</option>
           {/each}
-        </ul>
+        </select>
       </div>
   
       <div class="relative w-full max-w-xs">
